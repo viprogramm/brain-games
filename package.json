@@ -1,0 +1,34 @@
+{
+  "name": "project-lvl1-s69-vitaliyti",
+  "version": "0.1.0",
+  "description": "Brain game",
+  "main": "index.js",
+  "bin": {
+    "brain-games": "dist/bin/brain-games.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "babel-node": "babel-node",
+    "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/viprogramm/project-lvl1-s69.git"
+  },
+  "keywords": [
+    "braingame"
+  ],
+  "author": "Vitaliy Ti",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/viprogramm/project-lvl1-s69/issues"
+  },
+  "homepage": "https://github.com/viprogramm/project-lvl1-s69#readme",
+  "devDependencies": {
+    "babel-cli": "*",
+    "babel-core": "*",
+    "babel-preset-env": "*",
+    "babel-preset-stage-0": "*"
+  }
+}
