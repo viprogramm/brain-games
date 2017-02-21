@@ -1,9 +1,5 @@
 import readlineSync from 'readline-sync';
 
-export const printMessage = (message) => {
-  console.log(message);
-};
-
-export const askQuestion = (question) => {
-  return readlineSync.question(question);
+export const getUserName = () => {
+  return readlineSync.question('May I have your name? ');
 };

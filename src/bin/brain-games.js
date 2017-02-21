@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-import { printMessage, askQuestion} from '../index'
+import { printMessage, getUserName} from '..'
 
-printMessage('Welcome to the Brain Games!\n');
-const userName = askQuestion('May I have your name? ');
-printMessage(`Hello ${userName}!`);
+console.log('Welcome to the Brain Games!\n');
+const userName = getUserName();
+console.log(`Hello ${userName}!`);
