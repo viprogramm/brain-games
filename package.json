@@ -1,10 +1,11 @@
 {
   "name": "project-lvl1-s69-vitaliyti",
-  "version": "0.2.0",
+  "version": "0.3.2",
   "description": "Brain game",
   "main": "index.js",
   "bin": {
-    "brain-games": "dist/bin/brain-games.js"
+    "brain-games": "dist/bin/brain-games.js",
+    "brain-even": "dist/bin/brain-even.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
