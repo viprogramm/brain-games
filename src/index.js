@@ -11,3 +11,28 @@ export const generateNumber = () =>
 
 export const isEven = number =>
   number % 2 === 0;
+
+export const play = (userName) => {
+  let numberOfCycles = 3;
+
+  while (numberOfCycles > 0) {
+    const number = generateNumber();
+    const rightAnswer = isEven(number) ? 'yes' : 'no';
+    const userAnswer = getUserAnswer(number).toLocaleLowerCase().trim();
+
+    console.log(`Your answer: ${userAnswer}`);
+
+    if (rightAnswer !== userAnswer) {
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`);
+      console.log(`Let's try again, ${userName}!`);
+      break;
+    } else {
+      console.log('Correct');
+    }
+    numberOfCycles -= 1;
+  }
+
+  if (numberOfCycles === 0) {
+    console.log(`Congratulations, ${userName}!`);
+  }
+}
