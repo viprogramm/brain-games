@@ -1,6 +1,6 @@
 {
   "name": "project-lvl1-s69-vitaliyti",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "description": "Brain game",
   "main": "index.js",
   "bin": {

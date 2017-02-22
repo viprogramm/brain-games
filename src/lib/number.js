@@ -21,7 +21,7 @@ export const getSortedNumbersArray = (number) => {
   return arr.concat().sort();
 };
 
-export const getBalanceNumber = (number) => {
+export const getBalance = (number) => {
   const sortedNumbers = getSortedNumbersArray(number);
   let rebalance = false;
   for (let i = 1; i < sortedNumbers.length; i += 1) {
@@ -35,7 +35,7 @@ export const getBalanceNumber = (number) => {
 
   const updatedNumber = sortedNumbers.join('');
   if (rebalance) {
-    return getBalanceNumber(updatedNumber);
+    return getBalance(updatedNumber);
   }
-  return Number(updatedNumber);
+  return updatedNumber;
 };
