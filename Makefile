@@ -8,7 +8,10 @@ publish:
 	npm publish
 
 build:
-	npm run clean && npm run build
+	npm run build
+
+clean:
+	npm run clean
 
 lint:
 	npm run eslint -- src
