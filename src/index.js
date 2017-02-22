@@ -35,4 +35,4 @@ export const play = (userName) => {
   if (numberOfCycles === 0) {
     console.log(`Congratulations, ${userName}!`);
   }
-}
+};

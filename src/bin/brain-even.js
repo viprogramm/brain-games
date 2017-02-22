@@ -9,5 +9,3 @@ const userName = getUserName();
 console.log(`Hello ${userName}!`);
 
 play(userName);
-
-
