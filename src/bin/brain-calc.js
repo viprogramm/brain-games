@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 
-import make from '../';
 import { getUserName } from '../lib/user';
-import EvenGame from '../games/EvenGame';
+import make from '../';
+import CalcGame from '../games/CalcGame';
 
 console.log('Welcome to Brain Games!');
-console.log('Answer "yes" if number even otherwise answer "no".\n');
+console.log('What is the result of the expression?.\n');
 
 const userName = getUserName();
 console.log(`Hello ${userName}!`);
 
-const game = make(EvenGame);
+const game = make(CalcGame);
 game(userName);

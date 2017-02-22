@@ -1,34 +1,23 @@
-import readlineSync from 'readline-sync';
+import { getUserAnswer } from './lib/user';
+import BaseGame from './games/BaseGame';
 
-export const getUserName = () =>
-  readlineSync.question('May I have your name? ');
-
-export const getUserAnswer = number =>
-  readlineSync.question(`Question ${number} `);
-
-export const generateNumber = () =>
-  Math.floor(Math.random() * 99);
-
-export const isEven = number =>
-  number % 2 === 0;
-
-export const play = (userName) => {
+const run = (Game, userName) => {
   let numberOfCycles = 3;
 
   while (numberOfCycles > 0) {
-    const number = generateNumber();
-    const rightAnswer = isEven(number) ? 'yes' : 'no';
-    const userAnswer = getUserAnswer(number).toLocaleLowerCase().trim();
-
+    const game = new Game();
+    const userAnswer = getUserAnswer(game.getQuestion()).toLocaleLowerCase().trim();
+    const rightAnswer = game.getAnswer();
     console.log(`Your answer: ${userAnswer}`);
 
-    if (rightAnswer !== userAnswer) {
+    if (game.isCorrect(userAnswer)) {
+      console.log('Correct');
+    } else {
       console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`);
       console.log(`Let's try again, ${userName}!`);
       break;
-    } else {
-      console.log('Correct');
     }
+
     numberOfCycles -= 1;
   }
 
@@ -36,3 +25,5 @@ export const play = (userName) => {
     console.log(`Congratulations, ${userName}!`);
   }
 };
+
+export default (Game = BaseGame) => userName => run(Game, userName);
