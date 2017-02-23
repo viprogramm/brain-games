@@ -1,16 +1,18 @@
-import { getUserAnswer } from './lib/user';
-import BaseGame from './games/BaseGame';
+import { generateNumber, generateOperator } from './lib/number';
+import { getUserName, getUserAnswer } from './lib/user';
+import calcGame from './games/calcGame';
+import evenGame from './games/evenGame';
 
-const run = (Game, userName) => {
+const play = (gameConstructor, userName) => {
   let numberOfCycles = 3;
 
   while (numberOfCycles > 0) {
-    const game = new Game();
-    const userAnswer = getUserAnswer(game.getQuestion()).toLocaleLowerCase().trim();
-    const rightAnswer = game.getAnswer();
+    const game = gameConstructor();
+    const userAnswer = getUserAnswer(game.question).toLocaleLowerCase().trim();
+    const rightAnswer = game.answer;
     console.log(`Your answer: ${userAnswer}`);
 
-    if (game.isCorrect(userAnswer)) {
+    if (rightAnswer === userAnswer) {
       console.log('Correct');
     } else {
       console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.`);
@@ -26,4 +28,22 @@ const run = (Game, userName) => {
   }
 };
 
-export default (Game = BaseGame) => userName => run(Game, userName);
+export default (gameName = 'calc') => {
+  const userName = getUserName();
+
+  console.log(`Hello ${userName}!`);
+
+  let gameConstructor;
+  switch (gameName) {
+    case 'calc':
+      gameConstructor = () => calcGame(generateOperator(), generateNumber(), generateNumber());
+      break;
+    case 'even':
+      gameConstructor = () => evenGame(generateNumber());
+      break;
+    default:
+      throw new Error('Could not find the game');
+  }
+
+  play(gameConstructor, userName);
+};
