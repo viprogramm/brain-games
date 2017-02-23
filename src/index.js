@@ -28,22 +28,29 @@ const play = (gameConstructor, userName) => {
   }
 };
 
-export default (gameName = 'calc') => {
-  const userName = getUserName();
-
-  console.log(`Hello ${userName}!`);
+const game = (gameName = 'calc') => {
+  console.log('Welcome to Brain Games!');
 
   let gameConstructor;
   switch (gameName) {
     case 'calc':
+      console.log('What is the result of the expression?.\n');
       gameConstructor = () => calcGame(generateOperator(), generateNumber(), generateNumber());
       break;
     case 'even':
+      console.log('Answer "yes" if number even otherwise answer "no".\n');
       gameConstructor = () => evenGame(generateNumber());
       break;
     default:
       throw new Error('Could not find the game');
   }
 
+
+  const userName = getUserName();
+  console.log(`Hello ${userName}!`);
   play(gameConstructor, userName);
 };
+
+export const startCalcGame = () => game('calc');
+export const startEvenGame = () => game('even');
+
