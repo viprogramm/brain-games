@@ -15,7 +15,7 @@ const generateProgression = (progressionLength = 10) => {
 };
 
 const generateQuestion = (progressionArray, indexToHide) =>
-  [...progressionArray.slice(0, indexToHide), '..', ...progressionArray.slice(indexToHide + 1)].join(', ');
+  [...progressionArray.slice(0, indexToHide), '..', ...progressionArray.slice(indexToHide + 1)].join(' ');
 
 const generateAnswer = (progressionArray, indexToHide) =>
   progressionArray[indexToHide].toString();
