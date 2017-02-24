@@ -2,16 +2,16 @@ import { generateNumber } from '../lib/number';
 
 const generateProgression = (progressionLength = 10) => {
   const start = generateNumber(10);
-  const diff = generateNumber(10);
+  const step = generateNumber(10);
 
-  let current = start;
-  const progressionArray = [];
-  for (let i = 0; i < progressionLength; i += 1) {
-    progressionArray[i] = current;
-    current += diff;
-  }
+  const iter = (acc, value) => {
+    if (acc.length >= progressionLength) {
+      return acc;
+    }
+    return iter([...acc, value], value + step);
+  };
 
-  return progressionArray;
+  return iter([], start);
 };
 
 const generateQuestion = (progressionArray, indexToHide) =>

@@ -1,13 +1,19 @@
 import { generateNumber } from '../lib/number';
 
 const isPrime = (number) => {
-  for (let i = 2; i < number; i += 1) {
-    if (number % i === 0) {
+  const recursion = (divisor) => {
+    if (divisor >= number) {
+      return true;
+    } else if (number % divisor === 0) {
       return false;
     }
-  }
-  return true;
+
+    return recursion(divisor + 1);
+  };
+
+  return recursion(2);
 };
+
 
 const generateGame = a => ({
   question: `${a}`,
